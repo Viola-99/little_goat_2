@@ -48,7 +48,7 @@ public class PlaceObjectOnGrid : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             Vector3 buf = new Vector3(smth.ramka.transform.position.x, 0.01f, smth.ramka.transform.position.z);
-
+            someDictionary[buf].GetComponent<tile_col>().tilesColliderObject.SetActive(false);
             someDictionary[buf].GetComponent<Rigidbody>().AddForce(new Vector3(0, 350, 0));
             someDictionary[buf].transform.parent = smth.ramka.transform;
             anth = someDictionary[buf];
