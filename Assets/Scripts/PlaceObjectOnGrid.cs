@@ -65,7 +65,7 @@ public class PlaceObjectOnGrid : MonoBehaviour
 
             if (Input.GetKeyUp(KeyCode.LeftControl))
             {
-                anth.transform.parent = null;
+               
             }
         }
 

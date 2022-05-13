@@ -8,11 +8,12 @@ public class tile_col : MonoBehaviour
 {
     [SerializeField] public GameObject tilesColliderObject;
     // Start is called before the first frame update
-
+  
     void OnCollisionEnter(Collision collision)
     {
         if (tilesColliderObject.activeSelf)
         {
+           transform.parent = null;
             tilesColliderObject.SetActive(true);
         }
     }
