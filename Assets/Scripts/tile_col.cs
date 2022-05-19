@@ -11,11 +11,14 @@ public class tile_col : MonoBehaviour
   
     void OnCollisionEnter(Collision collision)
     {
-        if (tilesColliderObject.activeSelf)
+        if (!tilesColliderObject.activeSelf)
         {
            transform.parent = null;
             tilesColliderObject.SetActive(true);
+            Debug.Log(tilesColliderObject);
+
         }
+        Debug.Log(tilesColliderObject);
     }
 
 

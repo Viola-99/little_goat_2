@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
 public class PlaceObjectOnGrid : MonoBehaviour
 {
     public Transform gridCellPrefab;
@@ -139,7 +140,7 @@ public class PlaceObjectOnGrid : MonoBehaviour
                 isColorMatchesEverywhere = false;
             }
            
-            Debug.Log("Color matches everywhere: " + isColorMatchesEverywhere);
+          //  Debug.Log("Color matches everywhere: " + isColorMatchesEverywhere);
         }
     }
     public class Node
