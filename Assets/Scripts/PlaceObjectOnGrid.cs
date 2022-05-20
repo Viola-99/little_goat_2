@@ -53,22 +53,7 @@ public class PlaceObjectOnGrid : MonoBehaviour
             someDictionary[buf].transform.parent = smth.ramka.transform;
             anth = someDictionary[buf];
 
-
-
-
-
-
         }
-        else
-        {
-
-
-            if (Input.GetKeyUp(KeyCode.LeftControl))
-            {
-               
-            }
-        }
-
     }
 
 
@@ -138,8 +123,9 @@ public class PlaceObjectOnGrid : MonoBehaviour
             {
                 isColorMatchesEverywhere = false;
             }
+
+            //Debug.Log("Color matches everywhere: " + isColorMatchesEverywhere);
            
-            Debug.Log("Color matches everywhere: " + isColorMatchesEverywhere);
         }
     }
     public class Node
