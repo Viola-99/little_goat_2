@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
 public class PlaceObjectOnGrid : MonoBehaviour
 {
     public Transform gridCellPrefab;
@@ -76,12 +77,22 @@ public class PlaceObjectOnGrid : MonoBehaviour
                 name++;
                 instancedTiles.Add(Instantiate(tile, new Vector3(i, 0.01f, j), Quaternion.identity));
                 instancedTiles[num].GetComponent<Renderer>().material.color = colors[num];
+                instancedTiles[num].GetComponent<tile_col>().border = this;
                 someDictionary.Add(instancedTiles[num].transform.position, instancedTiles[num]);
+
                 //anth_2 = someDictionary[num];
                 num++;
 
             }
         }
+    }
+
+    public void Record(GameObject tile_new)
+    {
+        someDictionary.Remove(tile_new.transform.position);
+        //  Debug.Log(border.someDictionary);
+        someDictionary.Add(tile_new.transform.position, tile_new);
+
     }
 
     private void RandomPosition()
@@ -124,8 +135,7 @@ public class PlaceObjectOnGrid : MonoBehaviour
                 isColorMatchesEverywhere = false;
             }
 
-            //Debug.Log("Color matches everywhere: " + isColorMatchesEverywhere);
-           
+ 
         }
     }
     public class Node
