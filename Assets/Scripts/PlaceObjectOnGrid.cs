@@ -90,7 +90,9 @@ public class PlaceObjectOnGrid : MonoBehaviour
     public void Record(GameObject tile_new)
     {
         someDictionary.Remove(tile_new.transform.position);
-        //  Debug.Log(border.someDictionary);
+
+
+     //   Debug.Log("Запись" + someDictionary[0;0;0]) ;
         someDictionary.Add(tile_new.transform.position, tile_new);
 
     }
@@ -134,8 +136,8 @@ public class PlaceObjectOnGrid : MonoBehaviour
             {
                 isColorMatchesEverywhere = false;
             }
+            Debug.Log("Все цвета совпали!");
 
- 
         }
     }
     public class Node
