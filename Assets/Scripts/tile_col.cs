@@ -14,8 +14,13 @@ public class tile_col : MonoBehaviour
         {
             transform.parent = null;
             tilesColliderObject.SetActive(true);
+<<<<<<< HEAD
             Debug.Log(border);
             border.Record(gameObject);
+=======
+            Debug.Log(tilesColliderObject);
+
+>>>>>>> 3de5a74e1ef8da6a5a392dd8a502e8c6d4868242
         }
         Debug.Log(tilesColliderObject);
     }
