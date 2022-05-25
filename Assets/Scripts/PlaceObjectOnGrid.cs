@@ -136,13 +136,15 @@ public class PlaceObjectOnGrid : MonoBehaviour
             {
                 isColorMatchesEverywhere = false;
             }
-<<<<<<< HEAD
-            Debug.Log("Все цвета совпали!");
 
-=======
-           
-          //  Debug.Log("Color matches everywhere: " + isColorMatchesEverywhere);
->>>>>>> 3de5a74e1ef8da6a5a392dd8a502e8c6d4868242
+            
+            //Debug.Log("Все цвета совпали!");
+
+
+        }
+        if (isColorMatchesEverywhere) 
+        {
+            Debug.Log("Все цвета совпали!");
         }
     }
     public class Node
