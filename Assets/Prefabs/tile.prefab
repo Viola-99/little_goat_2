@@ -171,3 +171,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilesColliderObject: {fileID: 1169054664444050882}
+  border: {fileID: 0}
