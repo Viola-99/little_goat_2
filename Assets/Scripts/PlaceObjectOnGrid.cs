@@ -15,7 +15,6 @@ public class PlaceObjectOnGrid : MonoBehaviour
     private int num = 0, num_2=0;
     private bool isGameStarted = false;
     public move smth;
-    public Vector3 buf;
     public GameObject anth;
    
     [SerializeField] private List<Color> colors;
@@ -30,30 +29,23 @@ public class PlaceObjectOnGrid : MonoBehaviour
        
         someDictionary = new Dictionary<Vector3Int, GameObject>();
         CreateGrid();
-        //audio = GetComponent<AudioSource>();
+       
     }
 
-    /*   void OnCollisionEnter()
-       {
-           if (someDictionary[buf].gameObject.tag == "tile")
-           {
-               Debug.Log("Game Over!");
-               // a rigidbody tagged as "Ball" hit the player
-           }
-
-       }*/
     void Update()
     {
         RandomPosition();
         Compare();
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            Vector3Int buf =   Vector3Int.RoundToInt(new Vector3 (smth.ramka.transform.position.x, 0.015f, smth.ramka.transform.position.z));
-            someDictionary[buf].GetComponent<tile_col>().tilesColliderObject.SetActive(false);
-            someDictionary[buf].GetComponent<Rigidbody>().AddForce(new Vector3(0, 350, 0));
-                 someDictionary[buf].transform.parent = smth.ramka.transform;
-            anth = someDictionary[buf];
-            
+
+            Vector3 buf = new Vector3(smth.ramka.transform.position.x, 0.01f, smth.ramka.transform.position.z);
+            Vector3Int els_buf = Vector3Int.RoundToInt(buf);
+            someDictionary[els_buf].GetComponent<tile_col>().tilesColliderObject.SetActive(false);
+            someDictionary[els_buf].GetComponent<Rigidbody>().AddForce(new Vector3(0, 350, 0));
+            someDictionary[els_buf].transform.parent = smth.ramka.transform;
+            anth = someDictionary[els_buf];
+
 
         }
     }
@@ -81,7 +73,6 @@ public class PlaceObjectOnGrid : MonoBehaviour
                 instancedTiles[num].GetComponent<tile_col>().border = this;
                 someDictionary.Add(Vector3Int.RoundToInt(instancedTiles[num].transform.position), instancedTiles[num]);
 
-                //anth_2 = someDictionary[num];
                 num++;
            
 
@@ -92,13 +83,8 @@ public class PlaceObjectOnGrid : MonoBehaviour
     public void Record(GameObject tile_new)
     {
 
-        //someDictionary.Remove(Vector3Int.RoundToInt(tile_new.transform.position));
-
-        //someDictionary.Add(Vector3Int.RoundToInt(tile_new.transform.position), tile_new);
-        Vector3Int pos = Vector3Int.RoundToInt(tile_new.transform.position);
-        someDictionary[pos] = tile_new;
-
-
+        someDictionary.Remove(Vector3Int.RoundToInt(tile_new.transform.position));
+        someDictionary.Add(Vector3Int.RoundToInt(tile_new.transform.position), tile_new);
 
     }
 
@@ -117,7 +103,9 @@ public class PlaceObjectOnGrid : MonoBehaviour
                     bool isRepeating = true;
                     do
                     {
+
                         instancedTiles[num_2].transform.position = new Vector3(Random.Range(0, height), 0.015f, Random.Range(0, width));
+
                         if (!someDictionary.ContainsKey(Vector3Int.RoundToInt(instancedTiles[num_2].transform.position)))
                         {
                             isRepeating = false;
@@ -132,7 +120,7 @@ public class PlaceObjectOnGrid : MonoBehaviour
     public void Compare()
     {
         bool isColorMatchesEverywhere = true;
-        foreach (Vector3 coords in someDictionary.Keys)
+        foreach (Vector3Int coords in someDictionary.Keys)
         {
                    
             Color cellColor = nodes[(int)coords.x, (int)coords.z].obj.GetComponent<Renderer>().material.color;
@@ -143,7 +131,7 @@ public class PlaceObjectOnGrid : MonoBehaviour
             }
 
             
-            //Debug.Log("Все цвета совпали!");
+     
 
 
         }

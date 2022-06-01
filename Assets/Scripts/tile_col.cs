@@ -5,8 +5,7 @@ using UnityEngine;
 public class tile_col : MonoBehaviour
 {
     [SerializeField] public GameObject tilesColliderObject;
-    // Start is called before the first frame update
-    [SerializeField] public PlaceObjectOnGrid border;
+    [HideInInspector] public PlaceObjectOnGrid border;
     private int num_2;
     void OnCollisionEnter(Collision collision)
     {
@@ -16,8 +15,11 @@ public class tile_col : MonoBehaviour
             tilesColliderObject.SetActive(true);
             Debug.Log(border);
             border.Record(gameObject);
+
+
         }
-       // Debug.Log(tilesColliderObject);
+  
+
     }
 
 
@@ -26,7 +28,7 @@ public class tile_col : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
 
