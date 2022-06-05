@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7328298430785249612}
   - component: {fileID: 3041203889746431884}
+  - component: {fileID: 1363235380292652881}
   m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7328298430785249612
 Transform:
   m_ObjectHideFlags: 0
@@ -44,6 +45,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1363235380292652881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169054664444050882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecd8281781cd47498d0b9ee268dd9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2113999774101176800
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,5 +183,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f61848d811c1c844ae738d2eec27cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilesColliderObject: {fileID: 1169054664444050882}
   border: {fileID: 0}
+  onAir: 0

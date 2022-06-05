@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{50D7D37E-08B0-9BF1-129B-8A60AC7CDE9E}</ProjectGuid>
+    <ProjectGuid>{DC7A94AE-6FDD-870B-DA7C-744263817C68}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\PlaceObjectOnGrid.cs" />
     <Compile Include="Assets\Scripts\move.cs" />
     <Compile Include="Assets\Scripts\tile_col.cs" />
+    <Compile Include="Assets\Scripts\Padenie.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

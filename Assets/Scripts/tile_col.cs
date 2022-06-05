@@ -4,20 +4,36 @@ using UnityEngine;
 
 public class tile_col : MonoBehaviour
 {
-    [SerializeField] public GameObject tilesColliderObject;
+   // [SerializeField] public GameObject tilesColliderObject;
     [HideInInspector] public PlaceObjectOnGrid border;
     private int num_2;
+    [HideInInspector] public bool onAir;
     void OnCollisionEnter(Collision collision)
     {
-        if (!tilesColliderObject.activeSelf)
+        tile_col obj_padeniy;
+        collision.gameObject.TryGetComponent<tile_col>(out obj_padeniy);
+        if (obj_padeniy != null)
         {
-            transform.parent = null;
-            tilesColliderObject.SetActive(true);
-            Debug.Log(border);
-            border.Record(gameObject);
+            if (obj_padeniy.onAir == true)
+		{
 
-
+            Debug.Log("GameOver!");
         }
+            
+        }
+        else
+        {
+            if (onAir)
+            {
+                transform.parent = null;
+                onAir = false;
+
+                border.Record(gameObject);
+
+
+            }
+        }
+       
   
 
     }

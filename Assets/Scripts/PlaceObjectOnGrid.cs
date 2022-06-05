@@ -41,7 +41,7 @@ public class PlaceObjectOnGrid : MonoBehaviour
 
             Vector3 buf = new Vector3(smth.ramka.transform.position.x, 0.01f, smth.ramka.transform.position.z);
             Vector3Int els_buf = Vector3Int.RoundToInt(buf);
-            someDictionary[els_buf].GetComponent<tile_col>().tilesColliderObject.SetActive(false);
+            someDictionary[els_buf].GetComponent<tile_col>().onAir=true;
             someDictionary[els_buf].GetComponent<Rigidbody>().AddForce(new Vector3(0, 350, 0));
             someDictionary[els_buf].transform.parent = smth.ramka.transform;
             anth = someDictionary[els_buf];
@@ -49,9 +49,9 @@ public class PlaceObjectOnGrid : MonoBehaviour
 
         }
     }
+	
 
-
-    private void CreateGrid()
+	private void CreateGrid()
     {
         nodes = new Node[width, height];
         var name = 0;
