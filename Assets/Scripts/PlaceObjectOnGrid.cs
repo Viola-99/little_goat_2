@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-
 public class PlaceObjectOnGrid : MonoBehaviour
 {
     public Transform gridCellPrefab;
@@ -12,134 +11,160 @@ public class PlaceObjectOnGrid : MonoBehaviour
     [SerializeField] public int height;
     [SerializeField] public int width;
     private Node[,] nodes;
-    private int num = 0, num_2=0;
     private bool isGameStarted = false;
-    public move smth;
-    public GameObject anth;
+    public SelectionOutlineControl selectionControl;
+    public GameObject manipulatedTile;
    
     [SerializeField] private List<Color> colors;
     [SerializeField] private List<GameObject> instancedTiles;
     [SerializeField] public GameObject prefab;
     Dictionary<Vector3Int, GameObject> someDictionary;
+
+    [SerializeField] private GameObject loseUIElement;
+    [SerializeField] private GameObject winUIElement;
    
-
-
     void Start()
     {
-       
-        someDictionary = new Dictionary<Vector3Int, GameObject>();
         CreateGrid();
-       
     }
 
     void Update()
     {
-        RandomPosition();
-        Compare();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            RandomizeTilesPositions();
+        }
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-
-            Vector3 buf = new Vector3(smth.ramka.transform.position.x, 0.01f, smth.ramka.transform.position.z);
-            Vector3Int els_buf = Vector3Int.RoundToInt(buf);
-            someDictionary[els_buf].GetComponent<tile_col>().onAir=true;
-            someDictionary[els_buf].GetComponent<Rigidbody>().AddForce(new Vector3(0, 350, 0));
-            someDictionary[els_buf].transform.parent = smth.ramka.transform;
-            anth = someDictionary[els_buf];
-
-
+            TileJump();
+        }
+        if(isGameStarted == true)
+        {
+            CompareColorsWinCheck();
         }
     }
 	
-
 	private void CreateGrid()
     {
+        int num = 0;
         nodes = new Node[width, height];
         var name = 0;
+        someDictionary = new Dictionary<Vector3Int, GameObject>();
+
         GameObject instantiatedRamka = Instantiate(prefab, new Vector3(1, 0.002f, 1), Quaternion.identity);
-        smth.ramka = instantiatedRamka;
+        selectionControl.ramka = instantiatedRamka;
 
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
+                //create cell
                 Vector3 worldPosition = new Vector3(i, 0, j);
                 Transform obj = Instantiate(gridCellPrefab, worldPosition, Quaternion.identity);
                 obj.name = "Cell" + name;
                 obj.GetComponent<Renderer>().material.color = colors[num];
                 nodes[i, j] = new Node(true, worldPosition, obj);
                 name++;
+
+                //create tile
                 instancedTiles.Add(Instantiate(tile, new Vector3(i, 0.015f, j), Quaternion.identity));
                 instancedTiles[num].GetComponent<Renderer>().material.color = colors[num];
                 instancedTiles[num].GetComponent<tile_col>().border = this;
                 someDictionary.Add(Vector3Int.RoundToInt(instancedTiles[num].transform.position), instancedTiles[num]);
 
                 num++;
-           
-
             }
         }
     }
 
-    public void Record(GameObject tile_new)
+    private void TileJump()
     {
+        Vector3Int els_buf = Vector3Int.RoundToInt(selectionControl.ramka.transform.position);
+        els_buf.y = 0;
 
-        someDictionary.Remove(Vector3Int.RoundToInt(tile_new.transform.position));
-        someDictionary.Add(Vector3Int.RoundToInt(tile_new.transform.position), tile_new);
-
-    }
-
-    private void RandomPosition()
-    {
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (someDictionary[els_buf] != null)
         {
-            if (isGameStarted == false)
+            if(manipulatedTile != null)
             {
-                isGameStarted = true;
-                someDictionary.Clear();
-
-                for (num_2 = 0; num_2 < instancedTiles.Count; num_2++)
+                if (manipulatedTile.transform.parent == selectionControl.ramka.transform)
                 {
-                    bool isRepeating = true;
-                    do
-                    {
-
-                        instancedTiles[num_2].transform.position = new Vector3(Random.Range(0, height), 0.015f, Random.Range(0, width));
-
-                        if (!someDictionary.ContainsKey(Vector3Int.RoundToInt(instancedTiles[num_2].transform.position)))
-                        {
-                            isRepeating = false;
-                        }
-                    } while (isRepeating);
-                    someDictionary.Add(Vector3Int.RoundToInt(instancedTiles[num_2].transform.position), instancedTiles[num_2]);
+                    manipulatedTile.transform.parent = null;
                 }
             }
+
+            someDictionary[els_buf].GetComponent<tile_col>().onAir = true;
+            someDictionary[els_buf].GetComponent<Rigidbody>().AddForce(new Vector3(0, 350, 0));
+            someDictionary[els_buf].transform.parent = selectionControl.ramka.transform;
+            manipulatedTile = someDictionary[els_buf];
+            someDictionary[els_buf] = null;
         }
     }
 
-    public void Compare()
+    public void OnTileFall(GameObject tile_new)
+    {
+        if(tile_new.transform.parent == selectionControl.ramka.transform)
+        {
+            tile_new.transform.parent = null;
+        }
+
+
+        Vector3Int targetTilePosition = Vector3Int.RoundToInt(tile_new.transform.position);
+        if (someDictionary[targetTilePosition] != null)
+        {
+            OnGameLose();
+        }
+        someDictionary.Remove(targetTilePosition);
+        someDictionary.Add(targetTilePosition, tile_new);
+    }
+
+    private void RandomizeTilesPositions()
+    {
+        if (isGameStarted == false)
+        {
+            isGameStarted = true;
+            someDictionary.Clear();
+
+            for (int num_2 = 0; num_2 < instancedTiles.Count; num_2++)
+            {
+                bool isRepeating = true;
+                do
+                {
+                    instancedTiles[num_2].transform.position = new Vector3(Random.Range(0, height), 0.015f, Random.Range(0, width));
+
+                    if (!someDictionary.ContainsKey(Vector3Int.RoundToInt(instancedTiles[num_2].transform.position)))
+                    {
+                        isRepeating = false;
+                    }
+                } while (isRepeating);
+                someDictionary.Add(Vector3Int.RoundToInt(instancedTiles[num_2].transform.position), instancedTiles[num_2]);
+            }
+        }
+    }
+
+    public void CompareColorsWinCheck()
     {
         bool isColorMatchesEverywhere = true;
         foreach (Vector3Int coords in someDictionary.Keys)
         {
-                   
-            Color cellColor = nodes[(int)coords.x, (int)coords.z].obj.GetComponent<Renderer>().material.color;
-            Color tileColor = someDictionary[Vector3Int.RoundToInt(coords)].GetComponent<Renderer>().material.color;
+            if(someDictionary[coords] == null)
+            {
+                //One of cells is empty...
+                return;
+            }
+
+            Color cellColor = nodes[coords.x, coords.z].obj.GetComponent<Renderer>().material.color;
+            Color tileColor = someDictionary[coords].GetComponent<Renderer>().material.color;
             if (cellColor != tileColor)
             {
                 isColorMatchesEverywhere = false;
             }
-
-            
-     
-
-
         }
         if (isColorMatchesEverywhere) 
         {
-            Debug.Log("Все цвета совпали!");
+            OnGameWin();
         }
     }
+
     public class Node
     {
         public bool isPlaceable;
@@ -153,5 +178,16 @@ public class PlaceObjectOnGrid : MonoBehaviour
             this.obj = obj;
         }
     }
-   
+
+    private void OnGameWin()
+    {
+        Debug.Log("Все цвета совпали!");
+        winUIElement.SetActive(true);
     }
+
+    private void OnGameLose()
+    {
+        Debug.Log("You lose. Game Over!");
+        loseUIElement.SetActive(true);
+    }
+}

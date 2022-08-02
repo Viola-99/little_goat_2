@@ -8,6 +8,7 @@ public class tile_col : MonoBehaviour
     [HideInInspector] public PlaceObjectOnGrid border;
     private int num_2;
     [HideInInspector] public bool onAir;
+
     void OnCollisionEnter(Collision collision)
     {
         tile_col obj_padeniy;
@@ -15,38 +16,18 @@ public class tile_col : MonoBehaviour
         if (obj_padeniy != null)
         {
             if (obj_padeniy.onAir == true)
-		{
-
-            Debug.Log("GameOver!");
-        }
-            
+		    {
+                Debug.Log("GameOver!");
+            }
         }
         else
         {
             if (onAir)
             {
-                transform.parent = null;
                 onAir = false;
 
-                border.Record(gameObject);
-
-
+                border.OnTileFall(gameObject);
             }
         }
-       
-  
-
-    }
-
-
-    void Start()
-    {
-
-    }
-
-   
-    void Update()
-    {
-
     }
 }

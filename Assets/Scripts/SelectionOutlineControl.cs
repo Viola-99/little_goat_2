@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class move : MonoBehaviour
+public class SelectionOutlineControl : MonoBehaviour
 {
     public GameObject ramka;//здесь ми указываем персонажа как игровой Object;
     [SerializeField] private PlaceObjectOnGrid border;
