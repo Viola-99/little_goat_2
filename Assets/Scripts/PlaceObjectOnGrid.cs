@@ -12,6 +12,8 @@ public class PlaceObjectOnGrid : MonoBehaviour
     [SerializeField] public int width;
     private Node[,] nodes;
     private bool isGameStarted = false;
+    private bool isGameEnded = false;
+
     public SelectionOutlineControl selectionControl;
     public GameObject manipulatedTile;
    
@@ -34,12 +36,13 @@ public class PlaceObjectOnGrid : MonoBehaviour
         {
             RandomizeTilesPositions();
         }
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+
+        if(isGameStarted == true && isGameEnded == false)
         {
-            TileJump();
-        }
-        if(isGameStarted == true)
-        {
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                TileJump();
+            }
             CompareColorsWinCheck();
         }
     }
@@ -183,11 +186,13 @@ public class PlaceObjectOnGrid : MonoBehaviour
     {
         Debug.Log("Все цвета совпали!");
         winUIElement.SetActive(true);
+        isGameEnded = true;
     }
 
     private void OnGameLose()
     {
         Debug.Log("You lose. Game Over!");
         loseUIElement.SetActive(true);
+        isGameEnded = true;
     }
 }
