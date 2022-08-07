@@ -20,6 +20,7 @@ public class PlaceObjectOnGrid : MonoBehaviour
     [SerializeField] private List<Color> colors;
     [SerializeField] private List<GameObject> instancedTiles;
     [SerializeField] public GameObject prefab;
+    [SerializeField] public GameObject instantExtraTile;
     Dictionary<Vector3Int, GameObject> someDictionary;
 
     [SerializeField] private GameObject loseUIElement;
@@ -34,7 +35,17 @@ public class PlaceObjectOnGrid : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            RandomizeTilesPositions();
+            if (isGameStarted == false)
+            {
+                isGameStarted = true;
+                RandomizeTilesPositions();
+               
+                instantExtraTile = Instantiate(tile, new Vector3(1, 2, 1), Quaternion.identity);
+                instantExtraTile.GetComponent<Renderer>().material.color = Color.grey;
+                instantExtraTile.GetComponent<tile_col>().border = this;
+                instantExtraTile.GetComponent<tile_col>().onAir = true;
+                instantExtraTile.transform.parent = selectionControl.ramka.transform;
+            }
         }
 
         if(isGameStarted == true && isGameEnded == false)
@@ -51,7 +62,6 @@ public class PlaceObjectOnGrid : MonoBehaviour
     {
         int num = 0;
         nodes = new Node[width, height];
-        var name = 0;
         someDictionary = new Dictionary<Vector3Int, GameObject>();
 
         GameObject instantiatedRamka = Instantiate(prefab, new Vector3(1, 0.002f, 1), Quaternion.identity);
@@ -64,10 +74,10 @@ public class PlaceObjectOnGrid : MonoBehaviour
                 //create cell
                 Vector3 worldPosition = new Vector3(i, 0, j);
                 Transform obj = Instantiate(gridCellPrefab, worldPosition, Quaternion.identity);
-                obj.name = "Cell" + name;
+                obj.name = "Cell" + num;
                 obj.GetComponent<Renderer>().material.color = colors[num];
                 nodes[i, j] = new Node(true, worldPosition, obj);
-                name++;
+                
 
                 //create tile
                 instancedTiles.Add(Instantiate(tile, new Vector3(i, 0.015f, j), Quaternion.identity));
@@ -122,26 +132,24 @@ public class PlaceObjectOnGrid : MonoBehaviour
 
     private void RandomizeTilesPositions()
     {
-        if (isGameStarted == false)
+      
+        someDictionary.Clear();
+
+        for (int num_2 = 0; num_2 < instancedTiles.Count; num_2++)
         {
-            isGameStarted = true;
-            someDictionary.Clear();
-
-            for (int num_2 = 0; num_2 < instancedTiles.Count; num_2++)
+            bool isRepeating = true;
+            do
             {
-                bool isRepeating = true;
-                do
-                {
-                    instancedTiles[num_2].transform.position = new Vector3(Random.Range(0, height), 0.015f, Random.Range(0, width));
+                instancedTiles[num_2].transform.position = new Vector3(Random.Range(0, height), 0.015f, Random.Range(0, width));
 
-                    if (!someDictionary.ContainsKey(Vector3Int.RoundToInt(instancedTiles[num_2].transform.position)))
-                    {
-                        isRepeating = false;
-                    }
-                } while (isRepeating);
-                someDictionary.Add(Vector3Int.RoundToInt(instancedTiles[num_2].transform.position), instancedTiles[num_2]);
-            }
+                if (!someDictionary.ContainsKey(Vector3Int.RoundToInt(instancedTiles[num_2].transform.position)))
+                {
+                    isRepeating = false;
+                }
+            } while (isRepeating);
+            someDictionary.Add(Vector3Int.RoundToInt(instancedTiles[num_2].transform.position), instancedTiles[num_2]);
         }
+     
     }
 
     public void CompareColorsWinCheck()
@@ -184,7 +192,14 @@ public class PlaceObjectOnGrid : MonoBehaviour
 
     private void OnGameWin()
     {
+        if (instantExtraTile.transform.parent == selectionControl.ramka.transform)
+        {
+            instantExtraTile.transform.parent = null;
+        }
         Debug.Log("Все цвета совпали!");
+        instantExtraTile.transform.position = new Vector3(1, 2, 1);
+        instantExtraTile.GetComponent<Rigidbody>().useGravity = false;
+        instantExtraTile.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
         winUIElement.SetActive(true);
         isGameEnded = true;
     }
