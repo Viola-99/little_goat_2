@@ -25,10 +25,13 @@ public class PlaceObjectOnGrid : MonoBehaviour
 
     [SerializeField] private GameObject loseUIElement;
     [SerializeField] private GameObject winUIElement;
-   
+    [SerializeField] private GameObject menu_panel;
+    [SerializeField] private GameObject win_panel;
     void Start()
     {
         CreateGrid();
+        menu_panel.SetActive(false);
+        win_panel.SetActive(false);
     }
 
     void Update()
@@ -196,7 +199,9 @@ public class PlaceObjectOnGrid : MonoBehaviour
         {
             instantExtraTile.transform.parent = null;
         }
+      
         Debug.Log("Все цвета совпали!");
+		win_panel.SetActive(true);
         instantExtraTile.transform.position = new Vector3(1, 2, 1);
         instantExtraTile.GetComponent<Rigidbody>().useGravity = false;
         instantExtraTile.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
@@ -206,8 +211,10 @@ public class PlaceObjectOnGrid : MonoBehaviour
 
     private void OnGameLose()
     {
+        menu_panel.SetActive(true);
         Debug.Log("You lose. Game Over!");
         loseUIElement.SetActive(true);
         isGameEnded = true;
+
     }
 }

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: be10561f3beb3a24392a056f015e29f6
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Filth AOE
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3553d78b1a18edd4fa3e67f3ea001b4e, type: 3}
+  - {fileID: 12800000, guid: 4aa7840e852441043a6d7d02b3368b7b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
