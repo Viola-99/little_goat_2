@@ -27,6 +27,9 @@ public class PlaceObjectOnGrid : MonoBehaviour
     [SerializeField] private GameObject winUIElement;
     [SerializeField] private GameObject menu_panel;
     [SerializeField] private GameObject win_panel;
+
+    [SerializeField] private AudioSource testSound;
+
     void Start()
     {
         CreateGrid();
@@ -118,7 +121,20 @@ public class PlaceObjectOnGrid : MonoBehaviour
 
     public void OnTileFall(GameObject tile_new)
     {
-        if(tile_new.transform.parent == selectionControl.ramka.transform)
+
+        Vector3Int coords = Vector3Int.RoundToInt(tile_new.transform.position);
+        Color cellColor = nodes[coords.x, coords.z].obj.GetComponent<Renderer>().material.color;
+        Color tileColor = tile_new.GetComponent<Renderer>().material.color;
+        if (cellColor == tileColor)
+            {
+                Debug.Log("пик");
+            testSound.Play();
+            
+            }
+
+
+        
+        if (tile_new.transform.parent == selectionControl.ramka.transform)
         {
             tile_new.transform.parent = null;
         }
@@ -172,7 +188,9 @@ public class PlaceObjectOnGrid : MonoBehaviour
             {
                 isColorMatchesEverywhere = false;
             }
+           
         }
+      
         if (isColorMatchesEverywhere) 
         {
             OnGameWin();
