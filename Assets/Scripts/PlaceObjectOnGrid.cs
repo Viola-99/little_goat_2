@@ -171,7 +171,7 @@ public class PlaceObjectOnGrid : MonoBehaviour
             bool isRepeating = true;
             do
             {
-                instancedTiles[num_2].transform.position = new Vector3(Random.Range(0, height), 0.015f, Random.Range(0, width));
+                instancedTiles[num_2].transform.position = new Vector3(Random.Range(0, width), 0.015f, Random.Range(0, height));
 
                 if (!someDictionary.ContainsKey(Vector3Int.RoundToInt(instancedTiles[num_2].transform.position)))
                 {
