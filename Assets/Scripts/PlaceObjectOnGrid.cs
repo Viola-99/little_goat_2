@@ -32,10 +32,11 @@ public class PlaceObjectOnGrid : MonoBehaviour
 
     void Start()
     {
+        AddColor();
         CreateGrid();
         menu_panel.SetActive(false);
         win_panel.SetActive(false);
-    }
+       }
 
     void Update()
     {
@@ -63,6 +64,15 @@ public class PlaceObjectOnGrid : MonoBehaviour
             CompareColorsWinCheck();
         }
     }
+    private void AddColor() {
+
+        colors.Add(Color.blue);
+        colors.Add(Color.black);
+        colors.Add(Color.green);
+        colors.Add(Color.red);
+        colors.Add(Color.yellow);
+        colors.Add(Color.white);
+    }
 	
 	private void CreateGrid()
     {
@@ -82,13 +92,14 @@ public class PlaceObjectOnGrid : MonoBehaviour
                 Vector3 worldPosition = new Vector3(i, 0, j);
                 Transform obj = Instantiate(gridCellPrefab, worldPosition, Quaternion.identity);
                 obj.name = "Cell" + num;
-                obj.GetComponent<Renderer>().material.color = colors[num];
+                obj.GetComponent<Renderer>().material.color = colors [Random.Range(0, colors.Count)];
+
                 nodes[i, j] = new Node(true, worldPosition, obj);
                 
 
                 //create tile
                 instancedTiles.Add(Instantiate(tile, new Vector3(i, 0.015f, j), Quaternion.identity));
-                instancedTiles[num].GetComponent<Renderer>().material.color = colors[num];
+                instancedTiles[num].GetComponent<Renderer>().material.color = obj.GetComponent<Renderer>().material.color;
                 instancedTiles[num].GetComponent<tile_col>().border = this;
                 someDictionary.Add(Vector3Int.RoundToInt(instancedTiles[num].transform.position), instancedTiles[num]);
 
