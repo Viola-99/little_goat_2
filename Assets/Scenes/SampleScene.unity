@@ -625,27 +625,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridCellPrefab: {fileID: 4723233153889448185, guid: 60be518db438ed84fb1372bd5c356fe9, type: 3}
   tile: {fileID: 2113999774101176800, guid: 3e6e041e3b4675a42b06f6fc7bfd36d4, type: 3}
-  height: 4
-  width: 4
+  height: 0
+  width: 0
   selectionControl: {fileID: 1234573152}
   manipulatedTile: {fileID: 0}
-  colors:
-  - {r: 0.17988728, g: 0.9529412, b: 0.03921566, a: 1}
-  - {r: 1, g: 0.45360184, b: 0, a: 1}
-  - {r: 0.17988728, g: 0.9529412, b: 0.03921566, a: 1}
-  - {r: 1, g: 0.45360184, b: 0, a: 1}
-  - {r: 0.17988728, g: 0.9529412, b: 0.03921566, a: 1}
-  - {r: 1, g: 0.45360184, b: 0, a: 1}
-  - {r: 0.17988728, g: 0.9529412, b: 0.03921566, a: 1}
-  - {r: 1, g: 0.45360184, b: 0, a: 1}
-  - {r: 0.17988728, g: 0.9529412, b: 0.03921566, a: 1}
-  - {r: 1, g: 0.45360184, b: 0, a: 1}
-  - {r: 0.17988728, g: 0.9529412, b: 0.03921566, a: 1}
-  - {r: 1, g: 0.45360184, b: 0, a: 1}
-  - {r: 0.17988728, g: 0.9529412, b: 0.03921566, a: 1}
-  - {r: 1, g: 0.45360184, b: 0, a: 1}
-  - {r: 0.17988728, g: 0.9529412, b: 0.03921566, a: 1}
-  - {r: 1, g: 0.45360184, b: 0, a: 1}
+  colors: []
   instancedTiles: []
   prefab: {fileID: 5709624503716547493, guid: 2321b8b5ccea3bc4f914e21b90db8d17, type: 3}
   instantExtraTile: {fileID: 2113999774101176800, guid: 3e6e041e3b4675a42b06f6fc7bfd36d4, type: 3}
