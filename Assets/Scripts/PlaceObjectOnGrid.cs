@@ -77,8 +77,8 @@ public class PlaceObjectOnGrid : MonoBehaviour
 	private void CreateGrid()
     {
         int num = 0;
-        width = Random.Range(1, 50);
-        height = Random.Range(1, 50);
+        width = Random.Range(2, 10);
+        height = Random.Range(2, 10);
         nodes = new Node[width, height];
         someDictionary = new Dictionary<Vector3Int, GameObject>();
         GameObject instantiatedRamka = Instantiate(prefab, new Vector3(1, 0.002f, 1), Quaternion.identity);
