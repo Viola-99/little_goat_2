@@ -10,7 +10,7 @@ public class PlaceObjectOnGrid : MonoBehaviour
 
     [SerializeField] public int height;
     [SerializeField] public int width;
-    private Node[,] nodes;
+    public Node[,] nodes;
     private bool isGameStarted = false;
     private bool isGameEnded = false;
 
@@ -214,8 +214,9 @@ public class PlaceObjectOnGrid : MonoBehaviour
         public bool isPlaceable;
         public Vector3 cellPosition;
         public Transform obj;
+		internal object transform;
 
-        public Node(bool isPlaceable, Vector3 cellPosition, Transform obj)
+		public Node(bool isPlaceable, Vector3 cellPosition, Transform obj)
         {
             this.isPlaceable = isPlaceable;
             this.cellPosition = cellPosition;
