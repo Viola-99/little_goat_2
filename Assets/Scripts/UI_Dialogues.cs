@@ -1,35 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_Dialogues : MonoBehaviour
 {
     [SerializeField] private GameObject Dialogues;
-    private bool isGameStarted = false;
-   // private float tick = 0;
-    private IEnumerator TextDelay;
-    // Start is called before the first frame update
-    IEnumerator Start()
+    private string text;
+    [SerializeField] private AudioSource TextSound;
+    void Start()
     {
-        Dialogues.SetActive(false);
-        yield return new WaitForSeconds(5);
+        text = GetComponent<Text>().text;
+        GetComponent<Text>().text = "";
+        StartCoroutine(TextCoroutine());
+
         Dialogues.SetActive(true);
-      //  yield return new WaitForSeconds(5);
-      //Dialogues.SetActive(false);
-        
+            
 
     }
 
-  /* IEnumerator WaitAndPrint(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        print("WaitAndPrint " + Time.time);
-    }*/
-    // Update is called once per frame
+    IEnumerator TextCoroutine() {
+      
+        foreach (char abc in text) {
+            GetComponent<Text>().text += abc;
+            yield return new WaitForSeconds(0.05f);
+            
+        }
+    
+    }
     void Update()
     {
-        if (isGameStarted == true) {
-            Dialogues.SetActive(true);
-        }
+      
     }
 }
