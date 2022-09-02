@@ -6,43 +6,39 @@ using TMPro;
 
 public class UI_Dialogues : MonoBehaviour
 {
+    private AudioManager audioManager;
+    private TextMeshProUGUI targetTextComponent;
     [SerializeField] private GameObject Dialogues;
-    private string text;
     //[SerializeField] private AudioSource TextSound;
-   /* void Start()
+
+    [SerializeField] private float oneCharacterDelay = 0.5f;
+    [SerializeField] private float additionalSentenceEndDelay = 0.2f;
+    [SerializeField] [TextArea(5, 10)] private string introText;
+
+    private delegate void Callback();
+
+    IEnumerator TextCoroutine() 
     {
-        text = GetComponent<Text>().text;
-        GetComponent<Text>().text = "";
-        StartCoroutine(TextCoroutine());
-
-        Dialogues.SetActive(true);
-            
-
-    }*/
-
-    IEnumerator TextCoroutine() {
-      
-        foreach (char abc in text) {
+        foreach (char abc in introText) 
+        {
             GetComponent<Text>().text += abc;
             yield return new WaitForSeconds(0.05f);
-            
         }
-    
     }
-  /*  void Update()
-    {
-      
-    }*/
-
-    public float delay = 0.5f;
-    private string currentText = "";
-    //public GameObject load;
 
     private void Start()
     {
+        //text = GetComponent<Text>().text;
+        //GetComponent<Text>().text = "";
+        //StartCoroutine(TextCoroutine());
+
+        //Dialogues.SetActive(true);
+
+        audioManager = FindObjectOfType<AudioManager>();
+        targetTextComponent = GetComponent<TextMeshProUGUI>();
+
         Dialogues.SetActive(true);
-         StartCoroutine(Intro());
-        FindObjectOfType<AudioManager>().Play("typingSound");
+        StartCoroutine(Intro(1f));
     }
 
     private void Update()
@@ -53,41 +49,46 @@ public class UI_Dialogues : MonoBehaviour
         }
     }
     
-    IEnumerator Intro()
+    IEnumerator Intro(float delay = 0)
     {
-        /// FindObjectOfType<AudioManager>().SetVolume("typingSound", 1f);
-        // yield return new WaitForSeconds(1f);
-       
-         yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(delay);
 
-        StartCoroutine(TypeText("\t Мама отправилась за лекарствами младшему брату сутки назад. Нужно закрыть все окна в доме, иначе брату станет хуже или придет волк. "));
-        yield return new WaitForSeconds(37f);
-        FindObjectOfType<AudioManager>().SetVolume("typingSound", 0f);
-        //    FindObjectOfType<AudioManager>().SetVolume("typingSound", 1f);
+        audioManager.Play("typingSound");
+        audioManager.SetVolume("typingSound", 1f);
+
+        StartCoroutine(TypeText(introText, OnTypingEnd));
+        //yield return new WaitForSeconds(37f);
+
+        //    audioManager.SetVolume("typingSound", 1f);
 
         // yield return new WaitForSeconds(2f);
         //  TextSound.Play(0);
 
-
-        // FindObjectOfType<AudioManager>().StartFade("ambient", "typingSound", 1f, 0f);
+        // audioManager.StartFade("ambient", "typingSound", 1f, 0f);
         // yield return new WaitForSeconds(2f);
         //load.SetActive(true);
         //yield return new WaitForSeconds(2f);
         //Cursor.visible = true;
-        //    SceneManager.LoadScene("room");
     }
 
-    IEnumerator TypeText(string fullText)
+    IEnumerator TypeText(string fullText, Callback onTypingEnd = null)
     {
+        string currentText;
         for (int i = 0; i <= fullText.Length; i++)
         {
             currentText = fullText.Substring(0, i);
-            GetComponent<TextMeshProUGUI>().text = currentText;
-            FindObjectOfType<AudioManager>().Play("typingSound");
-            yield return new WaitForSeconds(delay);
+            targetTextComponent.text = currentText;
+            yield return new WaitForSeconds(oneCharacterDelay);
             if (currentText.EndsWith("."))
-                yield return new WaitForSeconds(delay + 0.2f);
+            {
+                yield return new WaitForSeconds(oneCharacterDelay + additionalSentenceEndDelay);
+            }
         }
+        onTypingEnd?.Invoke();
     }
 
+    private void OnTypingEnd()
+    {
+        audioManager.SetVolume("typingSound", 0f);
+    }
 }
