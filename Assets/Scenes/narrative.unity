@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5866,10 +5866,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smooth: 2
-  DoorOpenAngle: 150
+  DoorOpenAngle: -150
   OpenAudio: {fileID: 8300000, guid: 5230776d9ee12f849a28ce7cf0cc8864, type: 3}
   CloseAudio: {fileID: 8300000, guid: 2963c839445fc7e4b9e2c3ec3a934943, type: 3}
-  Text: {fileID: 1553860564}
+  isOpen: 1
+  InteractionDescriptionText: {fileID: 1553860564}
 --- !u!65 &835821033
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6057,7 +6058,8 @@ MonoBehaviour:
   DoorOpenAngle: -90
   OpenAudio: {fileID: 8300000, guid: 5230776d9ee12f849a28ce7cf0cc8864, type: 3}
   CloseAudio: {fileID: 8300000, guid: 58cd569e43d664147b82aadbe0448036, type: 3}
-  Text: {fileID: 1553860564}
+  isOpen: 0
+  InteractionDescriptionText: {fileID: 1553860564}
 --- !u!65 &967518754
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6518,10 +6520,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smooth: 2
-  DoorOpenAngle: -157
+  DoorOpenAngle: 157
   OpenAudio: {fileID: 8300000, guid: 2963c839445fc7e4b9e2c3ec3a934943, type: 3}
   CloseAudio: {fileID: 8300000, guid: 5230776d9ee12f849a28ce7cf0cc8864, type: 3}
-  Text: {fileID: 1553860564}
+  isOpen: 1
+  InteractionDescriptionText: {fileID: 1553860564}
 --- !u!65 &1376523387
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6678,6 +6681,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 60.573997
       objectReference: {fileID: 0}
+    - target: {fileID: 315597704634204522, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.50792694
+      objectReference: {fileID: 0}
+    - target: {fileID: 315597704634204522, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.49100378
+      objectReference: {fileID: 0}
+    - target: {fileID: 315597704634204522, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.46788636
+      objectReference: {fileID: 0}
+    - target: {fileID: 315597704634204522, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.53104424
+      objectReference: {fileID: 0}
+    - target: {fileID: 315597704634204522, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -95.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 315597704634204522, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 315597704634204522, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -60
+      objectReference: {fileID: 0}
     - target: {fileID: 802972748116167233, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.02
@@ -6820,19 +6851,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6484140265042676007, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.24572212
+      value: 0.49183673
       objectReference: {fileID: 0}
     - target: {fileID: 6484140265042676007, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.283683
+      value: -0.5417333
       objectReference: {fileID: 0}
     - target: {fileID: 6484140265042676007, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6368322
+      value: 0.47331938
       objectReference: {fileID: 0}
     - target: {fileID: 6484140265042676007, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.6734905
+      value: 0.49050015
       objectReference: {fileID: 0}
     - target: {fileID: 6484140265042676007, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6840,7 +6871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6484140265042676007, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 292
+      value: 242
       objectReference: {fileID: 0}
     - target: {fileID: 6484140265042676007, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -6857,6 +6888,34 @@ PrefabInstance:
     - target: {fileID: 6539206152762727973, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalPosition.z
       value: -1.811
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539206152762727973, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.47955588
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539206152762727973, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.46063268
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539206152762727973, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49449736
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539206152762727973, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.55974644
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539206152762727973, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -95.507
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539206152762727973, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -154.446
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539206152762727973, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 57.9
       objectReference: {fileID: 0}
     - target: {fileID: 7141927108607896883, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_RootOrder
@@ -6920,19 +6979,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7368100723603862664, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.3488587
+      value: -0.5100759
       objectReference: {fileID: 0}
     - target: {fileID: 7368100723603862664, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.3626446
+      value: 0.48607582
       objectReference: {fileID: 0}
     - target: {fileID: 7368100723603862664, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6215429
+      value: 0.49783668
       objectReference: {fileID: 0}
     - target: {fileID: 7368100723603862664, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.60039234
+      value: 0.5056793
       objectReference: {fileID: 0}
     - target: {fileID: 7368100723603862664, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6940,7 +6999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7368100723603862664, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 2.8849945
+      value: 152.885
       objectReference: {fileID: 0}
     - target: {fileID: 7368100723603862664, guid: 163099117d8b97a4bb83120a495b01f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -7388,6 +7447,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553860564}
   m_CullTransparentMesh: 1
+--- !u!1 &1580112176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1580112178}
+  - component: {fileID: 1580112177}
+  m_Layer: 0
+  m_Name: Quests
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1580112177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580112176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9495997a012c24a4d92b2580bb86efb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorsWindows:
+  - {fileID: 967518753}
+  - {fileID: 1376523386}
+  - {fileID: 1760285098}
+  - {fileID: 835821032}
+  - {fileID: 1657359332}
+--- !u!4 &1580112178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580112176}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1591740086 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8075688501739265634, guid: 1614da28bb4ff914bb9626115722cc03, type: 3}
@@ -7438,10 +7546,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smooth: 2
-  DoorOpenAngle: -50
+  DoorOpenAngle: 50
   OpenAudio: {fileID: 8300000, guid: 5230776d9ee12f849a28ce7cf0cc8864, type: 3}
   CloseAudio: {fileID: 8300000, guid: 2963c839445fc7e4b9e2c3ec3a934943, type: 3}
-  Text: {fileID: 1553860564}
+  isOpen: 1
+  InteractionDescriptionText: {fileID: 1553860564}
 --- !u!82 &1657359333
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7662,10 +7771,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smooth: 2
-  DoorOpenAngle: 150
+  DoorOpenAngle: -150
   OpenAudio: {fileID: 8300000, guid: 5230776d9ee12f849a28ce7cf0cc8864, type: 3}
   CloseAudio: {fileID: 8300000, guid: 2963c839445fc7e4b9e2c3ec3a934943, type: 3}
-  Text: {fileID: 1553860564}
+  isOpen: 1
+  InteractionDescriptionText: {fileID: 1553860564}
 --- !u!82 &1760285099
 AudioSource:
   m_ObjectHideFlags: 0

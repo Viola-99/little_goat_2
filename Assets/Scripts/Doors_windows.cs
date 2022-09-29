@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Doors_windows : MonoBehaviour
 {
@@ -9,54 +10,62 @@ public class Doors_windows : MonoBehaviour
 
 	public AudioClip OpenAudio;
 	public AudioClip CloseAudio;
-	private bool AudioS;
 
 	private Vector3 defaultRot;
 	private Vector3 openRot;
-	private bool open;
+	[SerializeField] private bool isOpen;
 	private bool enter;
-	[SerializeField] private GameObject Text;
+	[SerializeField] private GameObject InteractionDescriptionText;
 
-	// Use this for initialization
+	public bool IsOpen => isOpen;
+	public event Action OnOpen;
+	public event Action OnClose;
+
 	void Start()
 	{
-
 		defaultRot = transform.eulerAngles;
 		openRot = new Vector3(defaultRot.x, defaultRot.y + DoorOpenAngle, defaultRot.z);
-		Text.SetActive(false);
+		if(isOpen)
+        {
+			transform.eulerAngles = openRot;
+		}
+		else
+        {
+			transform.eulerAngles = defaultRot;
+        }
+		
+		InteractionDescriptionText.SetActive(false);
 	}
 
-	// Update is called once per frame
 	void Update()
 	{
-		if (open)
+		if (Input.GetKeyDown(KeyCode.F) && enter)
 		{
-			if (AudioS == false)
-			{
+			isOpen = !isOpen;
+			if(isOpen == true)
+            {
 				gameObject.GetComponent<AudioSource>().PlayOneShot(OpenAudio);
-				AudioS = true;
+				OnOpen?.Invoke();
 			}
+			else
+            {
+				gameObject.GetComponent<AudioSource>().PlayOneShot(CloseAudio);
+				OnClose?.Invoke();
+			}
+		}
+		if (isOpen)
+		{
 			transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth);
 		}
 		else
 		{
-			if (AudioS == true)
-			{
-			gameObject.GetComponent<AudioSource>().PlayOneShot(CloseAudio);
-		AudioS = false;
-		}
 			transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
-
-		}
-		if (Input.GetKeyDown(KeyCode.F) && enter)
-		{
-			open = !open;
 		}
 	}
 
 	void OnTriggerEnter(Collider col)
 	{
-		Text.SetActive(true);
+		InteractionDescriptionText.SetActive(true);
 		if (col.tag == "Character")
 		{
 			enter = true;
@@ -65,11 +74,10 @@ public class Doors_windows : MonoBehaviour
 
 	void OnTriggerExit(Collider col)
 	{
-		Text.SetActive(false);
+		InteractionDescriptionText.SetActive(false);
 		if (col.tag == "Character")
 		{
 			enter = false;
 		}
 	}
 }
-

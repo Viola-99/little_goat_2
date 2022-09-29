@@ -43,9 +43,10 @@ public class UI_Dialogues : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("f"))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             Dialogues.SetActive(false);
+            OnTypingEnd();
         }
     }
     
