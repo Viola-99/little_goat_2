@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CloseAllQuest : MonoBehaviour
 {
     private bool isQuestCompleted = false;
     [SerializeField] private List<Doors_windows> doorsWindows;
-
+     [SerializeField] private GameObject Quest_text;
+   // private TextMeshPro sometext;
     private void Start()
     {
+        Quest_text.GetComponent<TextMeshProUGUI>().text = "Close all windows and the door";
+        //Quest_text.sometext = Quest_text.GetComponent<TextMeshPro>();
+        //sometext.text = "Close all windows and door";
         foreach (var elem in doorsWindows)
         {
             elem.OnOpen += OnOpen;
@@ -43,6 +49,9 @@ public class CloseAllQuest : MonoBehaviour
                     elem.OnOpen -= OnOpen;
                     elem.OnClose -= OnClose;
                 }
+                //  Quest_text.GetComponent<TextMeshPro>().text = "Quest Completed!";
+
+                Quest_text.GetComponent<TextMeshProUGUI>().text = "Quest Completed";
 
                 Debug.Log("Quest Completed!");
             }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -345,7 +345,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -220, y: -215}
+  m_AnchoredPosition: {x: -879.4994, y: 387.3}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &267835894
@@ -368,10 +368,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d8857bf7245cd924bb8f813fb6999743, type: 2}
+  m_sharedMaterial: {fileID: 5836048391625206556, guid: d8857bf7245cd924bb8f813fb6999743, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6071,8 +6071,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.96513, y: 0.7530778, z: 2.0844615}
-  m_Center: {x: 0.3843487, y: -0.024586052, z: -0.029737987}
+  m_Size: {x: 1.9827803, y: 0.72185755, z: 2.0844615}
+  m_Center: {x: 0.3755233, y: -0.008975383, z: -0.029737987}
 --- !u!82 &967518755
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6180,8 +6180,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5652, y: 1.3154098, z: 2.102449}
-  m_Center: {x: -0.17703208, y: 0.07960342, z: -0.096661076}
+  m_Size: {x: 0.5091375, y: 1.1057714, z: 2.102449}
+  m_Center: {x: -0.14900106, y: 0.05078685, z: -0.096661076}
 --- !u!1 &1001447593
 GameObject:
   m_ObjectHideFlags: 0
@@ -7482,6 +7482,7 @@ MonoBehaviour:
   - {fileID: 1760285098}
   - {fileID: 835821032}
   - {fileID: 1657359332}
+  Quest_text: {fileID: 267835892}
 --- !u!4 &1580112178
 Transform:
   m_ObjectHideFlags: 0
