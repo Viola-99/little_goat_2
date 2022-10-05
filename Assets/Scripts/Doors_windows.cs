@@ -14,7 +14,7 @@ public class Doors_windows : MonoBehaviour
 	private Vector3 defaultRot;
 	private Vector3 openRot;
 	[SerializeField] private bool isOpen;
-	private bool enter;
+	//private bool enter;
 	[SerializeField] private GameObject InteractionDescriptionText;
 
 	public bool IsOpen => isOpen;
@@ -39,20 +39,31 @@ public class Doors_windows : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.F) && enter)
+		if (Input.GetKeyDown(KeyCode.F) /*&& enter*/)
 		{
-			isOpen = !isOpen;
-			if(isOpen == true)
-            {
-				gameObject.GetComponent<AudioSource>().PlayOneShot(OpenAudio);
-				OnOpen?.Invoke();
+			Ray ray = new Ray(transform.position, Vector3.up);
+			RaycastHit hit;
+
+			if (Physics.Raycast(ray, out hit))
+			{
+				if (hit.collider != null)
+				{
+					isOpen = !isOpen;
+					
+				}
+				if (isOpen == true)
+				{
+					gameObject.GetComponent<AudioSource>().PlayOneShot(OpenAudio);
+					OnOpen?.Invoke();
+				}
+				else
+				{
+					gameObject.GetComponent<AudioSource>().PlayOneShot(CloseAudio);
+					OnClose?.Invoke();
+				}
 			}
-			else
-            {
-				gameObject.GetComponent<AudioSource>().PlayOneShot(CloseAudio);
-				OnClose?.Invoke();
-			}
-		}
+			
+				}
 		if (isOpen)
 		{
 			transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth);
@@ -63,7 +74,26 @@ public class Doors_windows : MonoBehaviour
 		}
 	}
 
-	void OnTriggerEnter(Collider col)
+	void Open_Close() 
+	
+	{
+		
+		
+			isOpen = !isOpen;
+
+		
+		if (isOpen == true)
+		{
+			gameObject.GetComponent<AudioSource>().PlayOneShot(OpenAudio);
+			OnOpen?.Invoke();
+		}
+		else
+		{
+			gameObject.GetComponent<AudioSource>().PlayOneShot(CloseAudio);
+			OnClose?.Invoke();
+		}
+	}
+/*	void OnTriggerEnter(Collider col)
 	{
 		InteractionDescriptionText.SetActive(true);
 		if (col.tag == "Character")
@@ -79,5 +109,5 @@ public class Doors_windows : MonoBehaviour
 		{
 			enter = false;
 		}
-	}
+	}*/
 }
