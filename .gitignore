@@ -74,3 +74,5 @@ crashlytics-build.properties
 Assembly-CSharp.csproj
 Logs/AssetImportWorker0-prev.log
 .vs/little_goat_2/v16/.suo
+
+Logs/shadercompiler-UnityShaderCompiler.exe0.log
