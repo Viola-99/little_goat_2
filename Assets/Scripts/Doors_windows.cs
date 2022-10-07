@@ -75,12 +75,8 @@ public class Doors_windows : MonoBehaviour
 	}
 
 	public void  Open_Close() 
-	
 	{
-		
-		
-			isOpen = !isOpen;
-		Debug.Log(isOpen);
+		isOpen = !isOpen;
 		
 		if (isOpen == true)
 		{

@@ -5868,7 +5868,7 @@ MonoBehaviour:
   smooth: 2
   DoorOpenAngle: -150
   OpenAudio: {fileID: 8300000, guid: 5230776d9ee12f849a28ce7cf0cc8864, type: 3}
-  CloseAudio: {fileID: 8300000, guid: 2963c839445fc7e4b9e2c3ec3a934943, type: 3}
+  CloseAudio: {fileID: 8300000, guid: 58cd569e43d664147b82aadbe0448036, type: 3}
   isOpen: 1
   InteractionDescriptionText: {fileID: 1553860564}
 --- !u!65 &835821033
@@ -6167,8 +6167,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.14504421, y: 1.0092382, z: 2.102449}
-  m_Center: {x: -0.3310468, y: 0.3965442, z: -0.096661076}
+  m_Size: {x: 0.1, y: 1, z: 2}
+  m_Center: {x: 0, y: 0.3965442, z: -0.096661076}
 --- !u!1 &1001447593
 GameObject:
   m_ObjectHideFlags: 0
@@ -6508,8 +6508,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smooth: 2
   DoorOpenAngle: 157
-  OpenAudio: {fileID: 8300000, guid: 2963c839445fc7e4b9e2c3ec3a934943, type: 3}
-  CloseAudio: {fileID: 8300000, guid: 5230776d9ee12f849a28ce7cf0cc8864, type: 3}
+  OpenAudio: {fileID: 8300000, guid: 5230776d9ee12f849a28ce7cf0cc8864, type: 3}
+  CloseAudio: {fileID: 8300000, guid: 58cd569e43d664147b82aadbe0448036, type: 3}
   isOpen: 1
   InteractionDescriptionText: {fileID: 1553860564}
 --- !u!65 &1376523387
@@ -7549,7 +7549,7 @@ MonoBehaviour:
   smooth: 2
   DoorOpenAngle: 50
   OpenAudio: {fileID: 8300000, guid: 5230776d9ee12f849a28ce7cf0cc8864, type: 3}
-  CloseAudio: {fileID: 8300000, guid: 2963c839445fc7e4b9e2c3ec3a934943, type: 3}
+  CloseAudio: {fileID: 8300000, guid: 58cd569e43d664147b82aadbe0448036, type: 3}
   isOpen: 1
   InteractionDescriptionText: {fileID: 1553860564}
 --- !u!82 &1657359333
@@ -7774,7 +7774,7 @@ MonoBehaviour:
   smooth: 2
   DoorOpenAngle: -150
   OpenAudio: {fileID: 8300000, guid: 5230776d9ee12f849a28ce7cf0cc8864, type: 3}
-  CloseAudio: {fileID: 8300000, guid: 2963c839445fc7e4b9e2c3ec3a934943, type: 3}
+  CloseAudio: {fileID: 8300000, guid: 58cd569e43d664147b82aadbe0448036, type: 3}
   isOpen: 1
   InteractionDescriptionText: {fileID: 1553860564}
 --- !u!82 &1760285099
