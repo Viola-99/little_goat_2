@@ -16,8 +16,8 @@ public class window_interact : MonoBehaviour
     {
 		if (Input.GetKeyDown(KeyCode.F) )
 		{
-			
-			Ray ray = new Ray(transform.position, Vector3.forward);
+
+			Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 			RaycastHit hit;
 
 			if (Physics.Raycast(ray, out hit))

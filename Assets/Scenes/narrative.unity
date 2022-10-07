@@ -571,7 +571,6 @@ GameObject:
   - component: {fileID: 331549030}
   - component: {fileID: 331549031}
   - component: {fileID: 331549032}
-  - component: {fileID: 331549036}
   m_Layer: 7
   m_Name: character
   m_TagString: Character
@@ -693,18 +692,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &331549036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331549029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b526d5e7d95686c4382367399d842006, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &448878656
 GameObject:
   m_ObjectHideFlags: 0
@@ -5895,8 +5882,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.4108285, z: 1.7557098}
-  m_Center: {x: 0.0000018887345, y: 0.32148162, z: -0.2888283}
+  m_Size: {x: 0.2700322, y: 1.2130923, z: 1.0126301}
+  m_Center: {x: -0.02151644, y: 0.42036596, z: 0.08270838}
 --- !u!82 &835821034
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6073,19 +6060,6 @@ MonoBehaviour:
   CloseAudio: {fileID: 8300000, guid: 58cd569e43d664147b82aadbe0448036, type: 3}
   isOpen: 0
   InteractionDescriptionText: {fileID: 1553860564}
---- !u!65 &967518754
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 967518751}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.9827803, y: 0.72185755, z: 2.0844615}
-  m_Center: {x: 0.3755233, y: -0.008975383, z: -0.029737987}
 --- !u!82 &967518755
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6193,8 +6167,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5091375, y: 1.1057714, z: 2.102449}
-  m_Center: {x: -0.14900106, y: 0.05078685, z: -0.096661076}
+  m_Size: {x: 0.14504421, y: 1.0092382, z: 2.102449}
+  m_Center: {x: -0.3310468, y: 0.3965442, z: -0.096661076}
 --- !u!1 &1001447593
 GameObject:
   m_ObjectHideFlags: 0
@@ -6549,8 +6523,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.07037444, y: 1.3546869, z: 1}
+  m_Center: {x: -0.005086671, y: 0.4181728, z: -0.0000000062801546}
 --- !u!82 &1376523388
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7051,6 +7025,7 @@ GameObject:
   - component: {fileID: 1441878881}
   - component: {fileID: 1441878880}
   - component: {fileID: 1441878883}
+  - component: {fileID: 1441878884}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7138,6 +7113,18 @@ MonoBehaviour:
   playerTransform: {fileID: 331549035}
   offset: {x: 0, y: 0, z: 0}
   camPositionSpeed: 5
+--- !u!114 &1441878884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441878879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b526d5e7d95686c4382367399d842006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1447385391 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7659260253905719032, guid: 1614da28bb4ff914bb9626115722cc03, type: 3}
@@ -7545,8 +7532,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.91252244, y: 1.5488396, z: 1.2414225}
-  m_Center: {x: -0.043738794, y: 0.27441874, z: -0.12071183}
+  m_Size: {x: 0.10430362, y: 0.9386075, z: 0.9795263}
+  m_Center: {x: 0.024987282, y: 0.5950798, z: 0.010237025}
 --- !u!114 &1657359332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7770,8 +7757,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.6097506, z: 1.7537888}
-  m_Center: {x: -0.00000058528565, y: 0.30486932, z: -0.37688762}
+  m_Size: {x: 0.16089135, y: 1.205477, z: 1.0487413}
+  m_Center: {x: -0.020756396, y: 0.35016945, z: -0.024363711}
 --- !u!114 &1760285098
 MonoBehaviour:
   m_ObjectHideFlags: 0
