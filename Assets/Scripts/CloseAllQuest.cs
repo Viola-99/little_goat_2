@@ -9,7 +9,7 @@ public class CloseAllQuest : MonoBehaviour
     private bool isQuestCompleted = false;
     [SerializeField] private List<Doors_windows> doorsWindows;
      [SerializeField] private GameObject Quest_text;
-    private In_out_home colid;
+    [SerializeField] private In_out_home colid;
     //[SerializeField] private GameObject In_Out;
     //  private bool enter = true;
     // private TextMeshPro sometext;
@@ -45,7 +45,7 @@ public class CloseAllQuest : MonoBehaviour
      //   colid = GameObject.Find('').GetComponent<In_out_home>();
         if(!isQuestCompleted)
         {
-            if (AreAllClosedCheck())
+            if (AreAllClosedCheck() && colid.enter)
             {
                 isQuestCompleted = true;
                 foreach (var elem in doorsWindows)

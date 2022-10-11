@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5880,7 +5880,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835821030}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.2700322, y: 1.2130923, z: 1.0126301}
@@ -6579,11 +6579,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376523384}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.07037444, y: 1.3546869, z: 1}
-  m_Center: {x: -0.005086671, y: 0.4181728, z: -0.0000000062801546}
+  m_Size: {x: 0.07037444, y: 1.0303948, z: 1}
+  m_Center: {x: -0.005087078, y: 0.46372733, z: -0.000000008276404}
 --- !u!82 &1376523388
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7542,6 +7542,7 @@ MonoBehaviour:
   - {fileID: 835821032}
   - {fileID: 1657359332}
   Quest_text: {fileID: 267835892}
+  colid: {fileID: 1269607415}
 --- !u!4 &1580112178
 Transform:
   m_ObjectHideFlags: 0
@@ -7588,7 +7589,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1657359329}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.10430362, y: 0.9386075, z: 0.9795263}
@@ -7813,11 +7814,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760285095}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16089135, y: 1.205477, z: 1.0487413}
-  m_Center: {x: -0.020756396, y: 0.35016945, z: -0.024363711}
+  m_Size: {x: 0.16089135, y: 0.95299095, z: 1.0487413}
+  m_Center: {x: -0.020756437, y: 0.47641245, z: -0.02436371}
 --- !u!114 &1760285098
 MonoBehaviour:
   m_ObjectHideFlags: 0
