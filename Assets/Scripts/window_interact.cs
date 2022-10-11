@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class window_interact : MonoBehaviour
 {
-	private Doors_windows state;
+
 	// Start is called before the first frame update
     void Start()
     {

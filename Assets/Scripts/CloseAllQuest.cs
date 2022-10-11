@@ -9,7 +9,10 @@ public class CloseAllQuest : MonoBehaviour
     private bool isQuestCompleted = false;
     [SerializeField] private List<Doors_windows> doorsWindows;
      [SerializeField] private GameObject Quest_text;
-   // private TextMeshPro sometext;
+    private In_out_home colid;
+    //[SerializeField] private GameObject In_Out;
+    //  private bool enter = true;
+    // private TextMeshPro sometext;
     private void Start()
     {
         Quest_text.GetComponent<TextMeshProUGUI>().text = "Close all windows and the door";
@@ -39,9 +42,10 @@ public class CloseAllQuest : MonoBehaviour
     private void OnClose()
     {
         //Debug.Log("Close");
+     //   colid = GameObject.Find('').GetComponent<In_out_home>();
         if(!isQuestCompleted)
         {
-            if(AreAllClosedCheck())
+            if (AreAllClosedCheck())
             {
                 isQuestCompleted = true;
                 foreach (var elem in doorsWindows)
@@ -55,8 +59,10 @@ public class CloseAllQuest : MonoBehaviour
 
                 Debug.Log("Quest Completed!");
             }
+           
         }
     }
+
 
     private bool AreAllClosedCheck()
     {
@@ -65,6 +71,7 @@ public class CloseAllQuest : MonoBehaviour
             if(elem.IsOpen)
             {
                 return false;
+             
             }
         }
         return true;
