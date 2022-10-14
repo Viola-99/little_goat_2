@@ -6,6 +6,7 @@ TagManager:
   tags:
   - tile
   - Character
+  - Floor
   layers:
   - Default
   - TransparentFX

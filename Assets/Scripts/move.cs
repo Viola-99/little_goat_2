@@ -23,12 +23,15 @@ public class move : MonoBehaviour
 	private Rigidbody body;
 	private float rotationY;
 
+	private AudioSource _steps;
+
 	void Start()
 	{
 		body = GetComponent<Rigidbody>();
 		body.freezeRotation = true;
 		layerMask = 1 << gameObject.layer | 1 << 2;
 		layerMask = ~layerMask;
+		_steps = GetComponent<AudioSource>();
 	}
 
 	void FixedUpdate()
@@ -73,6 +76,11 @@ public class move : MonoBehaviour
 		direction = new Vector3(h, 0, v);
 		direction = head.TransformDirection(direction);
 		direction = new Vector3(direction.x, 0, direction.z);
+		if (h != 0.0f || v != 0.0f) {
+			if (!_steps.isPlaying) {
+				_steps.Play();
+					}
+		}
 
 		if (Input.GetKeyDown(jumpButton) && GetJump())
 		{
