@@ -6,23 +6,36 @@ using UnityEngine;
 public class pick_up : MonoBehaviour
 {
 	[SerializeField] private GameObject letter_pick;
+	private AudioSource _pickedLetter;
+	[SerializeField] private GameObject Dialogues;
+
 	// Start is called before the first frame update
 	void Start()
     {
-        
-    }
+		Dialogues.SetActive(false);
+		_pickedLetter = GetComponent<AudioSource>();
+	}
      public void Destroy_letter()
 	{
 		
-			Debug.Log("Button F clicked!");
-		Ray ray = new Ray(transform.position, transform.forward);
+		Debug.Log("Picked!");
+		Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
 		RaycastHit hitData;
 	
 
 
 		if (Physics.Raycast(ray, out hitData))
 		{
-			Destroy(letter_pick);// The Ray hit something!
+			if (hitData.transform.CompareTag("PickUp"))
+			{
+				if (!_pickedLetter.isPlaying)
+				{
+					_pickedLetter.Play();
+				}
+			
+			Destroy(hitData.transform.gameObject);
+			Dialogues.SetActive(true);
+			}
 		}
 
 	}
@@ -30,11 +43,15 @@ public class pick_up : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-	if (Input.GetKeyDown(KeyCode.F))
+	if (Input.GetMouseButtonDown(0))
 	{
 			Destroy_letter();
 	}
-
+		if (Input.GetKeyDown(KeyCode.E))
+		{
+			_pickedLetter.Play();
+			Dialogues.SetActive(false);
+		}
 
 	}
 

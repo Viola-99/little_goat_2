@@ -8,7 +8,7 @@ public class UI_Dialogues : MonoBehaviour
 {
     private AudioManager audioManager;
     private TextMeshProUGUI targetTextComponent;
-    [SerializeField] private GameObject Dialogues;
+    //[SerializeField] private GameObject Dialogues;
     //[SerializeField] private AudioSource TextSound;
 
     [SerializeField] private float oneCharacterDelay = 0.5f;
@@ -37,7 +37,7 @@ public class UI_Dialogues : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
         targetTextComponent = GetComponent<TextMeshProUGUI>();
 
-        Dialogues.SetActive(true);
+       // Dialogues.SetActive(true);
         StartCoroutine(Intro(1f));
     }
 
@@ -45,7 +45,7 @@ public class UI_Dialogues : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Dialogues.SetActive(false);
+           // Dialogues.SetActive(false);
             OnTypingEnd();
         }
     }
