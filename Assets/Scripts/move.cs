@@ -10,8 +10,8 @@ public class move : MonoBehaviour
 	public Transform head;
 
 	public float sensitivity = 5f; // чувствительность мыши
-	public float headMinY = -40f; // ограничение угла для головы
-	public float headMaxY = 40f;
+	public float headMinY = -65f; // ограничение угла для головы
+	public float headMaxY = 65f;
 
 	public KeyCode jumpButton = KeyCode.Space; // клавиша для прыжка
 	public float jumpForce = 10; // сила прыжка

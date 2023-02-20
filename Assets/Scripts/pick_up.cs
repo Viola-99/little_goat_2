@@ -8,6 +8,7 @@ public class pick_up : MonoBehaviour
 	[SerializeField] private GameObject letter_pick;
 	private AudioSource _pickedLetter;
 	[SerializeField] private GameObject Dialogues;
+	private bool inInventory = false;
 
 	// Start is called before the first frame update
 	void Start()
@@ -35,6 +36,7 @@ public class pick_up : MonoBehaviour
 			
 			Destroy(hitData.transform.gameObject);
 			Dialogues.SetActive(true);
+				inInventory = true;
 			}
 		}
 
@@ -47,10 +49,13 @@ public class pick_up : MonoBehaviour
 	{
 			Destroy_letter();
 	}
-		if (Input.GetKeyDown(KeyCode.E))
+		if (Input.GetKeyDown(KeyCode.E) && inInventory==true)
 		{
+			
+			
 			_pickedLetter.Play();
 			Dialogues.SetActive(false);
+			inInventory = false;
 		}
 
 	}
