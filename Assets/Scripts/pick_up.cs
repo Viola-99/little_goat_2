@@ -8,7 +8,7 @@ public class pick_up : MonoBehaviour
 	[SerializeField] private GameObject letter_pick;
 	private AudioSource _pickedLetter;
 	[SerializeField] private GameObject Dialogues;
-	private bool inInventory = false;
+	public bool inInventory = false;
 
 	// Start is called before the first frame update
 	void Start()

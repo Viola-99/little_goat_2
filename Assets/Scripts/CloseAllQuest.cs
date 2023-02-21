@@ -10,18 +10,26 @@ public class CloseAllQuest : MonoBehaviour
     [SerializeField] private List<Doors_windows> doorsWindows;
      [SerializeField] private GameObject Quest_text;
     [SerializeField] private In_out_home colid;
+    [SerializeField] private pick_up brought;
+
     //[SerializeField] private GameObject In_Out;
     //  private bool enter = true;
     // private TextMeshPro sometext;
     private void Start()
     {
+       Quest_text.SetActive(false);
         Quest_text.GetComponent<TextMeshProUGUI>().text = "Close all windows and the door";
-        //Quest_text.sometext = Quest_text.GetComponent<TextMeshPro>();
-        //sometext.text = "Close all windows and door";
+       
         foreach (var elem in doorsWindows)
         {
             elem.OnOpen += OnOpen;
             elem.OnClose += OnClose;
+        }
+    }
+    private void TakeTask()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && brought.inInventory == true) {
+            Quest_text.SetActive(true);
         }
     }
 
@@ -36,13 +44,12 @@ public class CloseAllQuest : MonoBehaviour
 
     private void OnOpen()
     {
-        //Debug.Log("Open");
+        
     }
 
     private void OnClose()
     {
-        //Debug.Log("Close");
-     //   colid = GameObject.Find('').GetComponent<In_out_home>();
+ 
         if(!isQuestCompleted)
         {
             if (AreAllClosedCheck() && colid.enter)
@@ -53,8 +60,7 @@ public class CloseAllQuest : MonoBehaviour
                     elem.OnOpen -= OnOpen;
                     elem.OnClose -= OnClose;
                 }
-                //  Quest_text.GetComponent<TextMeshPro>().text = "Quest Completed!";
-
+             
                 Quest_text.GetComponent<TextMeshProUGUI>().text = "Quest Completed";
 
                 Debug.Log("Quest Completed!");
@@ -75,5 +81,9 @@ public class CloseAllQuest : MonoBehaviour
             }
         }
         return true;
+    }
+
+    void Update() {
+        TakeTask();
     }
 }
