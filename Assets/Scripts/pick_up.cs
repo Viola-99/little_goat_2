@@ -55,7 +55,7 @@ public class pick_up : MonoBehaviour
 			
 			_pickedLetter.Play();
 			Dialogues.SetActive(false);
-			inInventory = false;
+		//	inInventory = false;
 		}
 
 	}
