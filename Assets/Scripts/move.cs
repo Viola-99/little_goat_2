@@ -42,11 +42,16 @@ public class move : MonoBehaviour
 		if (Mathf.Abs(body.velocity.x) > speed)
 		{
 			body.velocity = new Vector3(Mathf.Sign(body.velocity.x) * speed, body.velocity.y, body.velocity.z);
+			
 		}
+		
 		if (Mathf.Abs(body.velocity.z) > speed)
 		{
 			body.velocity = new Vector3(body.velocity.x, body.velocity.y, Mathf.Sign(body.velocity.z) * speed);
+			//Debug.Log("Speed z: " + body.velocity.z);
+			
 		}
+		
 	}
 
 	bool GetJump() // проверяем, есть ли коллайдер под ногами
@@ -76,16 +81,21 @@ public class move : MonoBehaviour
 		direction = new Vector3(h, 0, v);
 		direction = head.TransformDirection(direction);
 		direction = new Vector3(direction.x, 0, direction.z);
-		if (h != 0.0f || v != 0.0f) {
+		//	if (h != 0.0f || v != 0.0f) {
+		if (Mathf.Sign(body.velocity.x) < 0.01 && Mathf.Sign(body.velocity.z) < 0.01)
+		{
 			if (!_steps.isPlaying) {
 				_steps.Play();
 					}
 		}
-
+		Debug.Log("Speed: " + speed);
 		if (Input.GetKeyDown(jumpButton) && GetJump())
 		{
 			body.velocity = new Vector2(0, jumpForce);
 		}
+	
+		Debug.Log("Speed x: " + body.velocity.x);
+	Debug.Log("Speed z: " + body.velocity.z);
 	}
 
 	void OnDrawGizmosSelected() // подсветка, для визуальной настройки jumpDistance
