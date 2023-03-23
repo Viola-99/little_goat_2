@@ -81,8 +81,8 @@ public class move : MonoBehaviour
 		direction = new Vector3(h, 0, v);
 		direction = head.TransformDirection(direction);
 		direction = new Vector3(direction.x, 0, direction.z);
-		//	if (h != 0.0f || v != 0.0f) {
-		if (Mathf.Abs(body.velocity.x) > 0.01f && Mathf.Abs(body.velocity.z) > 0.01f)
+		
+		if (Mathf.Abs(body.velocity.x) > 0.01f || Mathf.Abs(body.velocity.z) > 0.01f)
 		{
 			if (!_steps.isPlaying) {
 				_steps.Play();
