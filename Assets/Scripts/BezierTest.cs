@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //[ExecuteAlways]
-public class BezierTest : MonoBehaviour
-{
-
-    public Transform P0;
-    public Transform P1;
-    public Transform P2;
-    public Transform P3;
-    public int width;
+//public class BezierTest : MonoBehaviour
+//{
+/*
+   // public Transform P0;
+    //public Transform P1;
+    //public Transform P2;
+    //public Transform P3;
+    //public int width;
 
    public GameObject prefab;
     [Range(0,1)]
@@ -21,7 +21,7 @@ public class BezierTest : MonoBehaviour
   {
     for (float f = 0; f <= 1; f+=0.1f)
         {
-            Fence_Prefab = Instantiate(prefab, transform.position = Bezier.GetPoint(P0.position, P1.position, P2.position, P3.position, f), Quaternion.identity);
+   //         Fence_Prefab = Instantiate(prefab, transform.position = Bezier.GetPoint(P0.position, P1.position, P2.position, P3.position, f), Quaternion.identity);
 
             Fence_Prefab.transform.rotation = Quaternion.LookRotation(Bezier.GetFirstDerivative(P0.position, P1.position, P2.position, P3.position, f));
             // i++;
@@ -55,3 +55,4 @@ public class BezierTest : MonoBehaviour
     }
 
 }
+*/
